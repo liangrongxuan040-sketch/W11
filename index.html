@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>毛小孩の家 - 寵物美容工作室</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #f7a072;
+      --primary-light: #fff8f2;
+      --primary-dark: #e07a4b;
+      --secondary-color: #8ecae6;
+      --accent-color: #ffb703;
+      --text-main: #4a3e3d;
+      --text-muted: #7d6e6a;
+      --bg-cream: #faf7f2;
+      --white: #ffffff;
+      --card-shadow: 0 10px 25px rgba(180, 140, 120, 0.12);
+      --card-radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans TC', 'Zen Maru Gothic', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+    }
+
+    /* 頂部裝飾條 */
+    .top-bar {
+      height: 8px;
+      background: linear-gradient(90deg, #f7a072, #ffb703, #8ecae6, #f7a072);
+      background-size: 200% 100%;
+    }
+
+    /* 容器 */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* 首頁頭部與介紹 (Section 1) */
+    header.hero-section {
+      background: linear-gradient(180deg, #ffffff 0%, var(--primary-light) 100%);
+      padding: 48px 0 40px;
+      border-bottom: 2px dashed #f0ddd1;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge-label {
+      display: inline-block;
+      background-color: #faede6;
+      color: var(--primary-dark);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 6px rgba(247, 160, 114, 0.2);
+    }
+
+    h1.brand-title {
+      font-family: 'Zen Maru Gothic', 'Noto Sans TC', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #3b2c28;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .paw-icon {
+      color: var(--primary-color);
+      display: inline-block;
+      animation: gentle-bounce 2s infinite ease-in-out;
+    }
+
+    @keyframes gentle-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px) rotate(5deg); }
+    }
+
+    .hero-intro {
+      max-width: 680px;
+      margin: 20px auto 28px;
+      font-size: 1.12rem;
+      color: #554440;
+    }
+
+    .hero-intro p {
+      margin-bottom: 8px;
+    }
+
+    /* 特色與標籤亮點 */
+    .highlight-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    .chip {
+      background: #ffffff;
+      border: 1.5px solid #f2cfbb;
+      color: #724e3c;
+      padding: 7px 18px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 快速資訊卡片 (營業時間、電話、預約) */
+    .contact-box {
+      background: #ffffff;
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      padding: 24px 28px;
+      max-width: 720px;
+      margin: 0 auto;
+      border: 1px solid #fae8df;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      text-align: left;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      min-width: 42px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .info-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .info-content {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #3b2c28;
+    }
+
+    .phone-link {
+      color: var(--primary-dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .phone-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Section 通用樣式 */
+    section {
+      padding: 50px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #3b2c28;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 4px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* Section 2: 價目表與作品照 */
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .media-card {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      border: 1px solid #f3ece4;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 32px rgba(180, 140, 120, 0.18);
+    }
+
+    .card-header-bar {
+      padding: 18px 24px;
+      background: #faf4ef;
+      border-bottom: 1px solid #f2e5dc;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-header-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #4b3630;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-tag {
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      background: #ffffff;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      font-weight: 600;
+      border: 1px solid #f5cfbc;
+    }
+
+    .card-img-wrapper {
+      padding: 16px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    .card-footer-caption {
+      padding: 14px 20px 18px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-align: center;
+      background: #ffffff;
+    }
+
+    /* Section 3: 美容後照護 (衛教卡) */
+    .care-section {
+      background: linear-gradient(180deg, var(--bg-cream) 0%, #fffcf8 100%);
+      padding-bottom: 70px;
+    }
+
+    .care-container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .care-card {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      border: 2px solid #fedbc7;
+    }
+
+    .care-header {
+      background: linear-gradient(135deg, #f7a072, #f58a53);
+      color: #ffffff;
+      padding: 22px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .care-title-group h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .care-title-group p {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      margin-top: 4px;
+    }
+
+    .care-badge {
+      background: rgba(255, 255, 255, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .care-body {
+      padding: 20px;
+      background: #ffffff;
+      text-align: center;
+    }
+
+    .care-body img {
+      width: 100%;
+      height: auto;
+      max-height: 850px;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+    }
+
+    /* 頁尾 Footer */
+    footer {
+      background-color: #3b2c28;
+      color: #ecdcd4;
+      padding: 36px 0 24px;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    footer .footer-brand {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    footer p {
+      margin-bottom: 6px;
+      opacity: 0.85;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-top: 18px;
+    }
+
+    /* 響應式手機排版 (Mobile Optimization) */
+    @media (max-width: 768px) {
+      h1.brand-title {
+        font-size: 2.1rem;
+      }
+
+      .hero-intro {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+
+      .showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .contact-box {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        margin: 0 10px;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .card-img-wrapper, .care-body {
+        padding: 10px;
+      }
+
+      .care-header {
+        padding: 18px 20px;
+      }
+
+      .care-title-group h2 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部彩色進度條 -->
+  <div class="top-bar"></div>
+
+  <!-- 1. 最上面：店名、介紹、營業時間、預約電話 -->
+  <header class="hero-section">
+    <div class="container">
+      <span class="badge-label">🐾 寵物美容工作室</span>
+      <h1 class="brand-title">
+        <span class="paw-icon">🐶</span>
+        毛小孩の家
+        <span class="paw-icon">🐱</span>
+      </h1>
+
+      <div class="hero-intro">
+        <p>我們是一間開在住宅區的小型寵物美容工作室，一次只接一隻，不關籠、不趕時間。</p>
+        <p>怕生、年紀大、第一次美容的毛孩，都可以慢慢來，享受專屬的溫柔呵護。</p>
+      </div>
+
+      <!-- 特色標籤 -->
+      <div class="highlight-chips">
+        <div class="chip">✨ 一對一單獨美容</div>
+        <div class="chip">📸 美容過程拍照回報</div>
+        <div class="chip">🛁 小型犬 / 中大型犬 / 貓咪皆可</div>
+        <div class="chip">🏠 不關籠、無壓力空間</div>
+      </div>
+
+      <!-- 快速資訊卡：營業時間與預約聯繫 -->
+      <div class="contact-box">
+        <div class="info-item">
+          <div class="info-icon">⏰</div>
+          <div>
+            <div class="info-label">營業時間</div>
+            <div class="info-content">週二至週日 10:00–19:00</div>
+            <div style="font-size: 0.85rem; color: #b45309; margin-top: 2px;">⚠️ 週一公休</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <div class="info-label">預約電話</div>
+            <div class="info-content">
+              <a href="tel:0900000000" class="phone-link">0900-000-000</a>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">歡迎提早來電或預約</div>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">💬</div>
+          <div>
+            <div class="info-label">LINE 線上預約</div>
+            <div class="info-content">@maoxiaohai</div>
+            <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">一對一訊息洽詢</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 2. 中間：價目表和作品照 -->
+  <main>
+    <section class="container">
+      <div class="section-header">
+        <h2 class="section-title">服務價目與作品展示</h2>
+        <p class="section-subtitle">透明清楚的收費標準，用心修剪每一隻可愛寶貝</p>
+      </div>
+
+      <div class="showcase-grid">
+        <!-- 價目表 -->
+        <div class="media-card">
+          <div class="card-header-bar">
+            <h3 class="card-header-title">📋 服務價目表</h3>
+            <span class="card-tag">透明公開</span>
+          </div>
+          <div class="card-img-wrapper">
+            <img src="price.png" alt="毛小孩の家 - 服務價目表" loading="lazy">
+          </div>
+          <div class="card-footer-caption">
+            依體型、毛質與服務項目區分，如有特殊毛結或護理需求歡迎先詢問！
+          </div>
+        </div>
+
+        <!-- 作品照 -->
+        <div class="media-card">
+          <div class="card-header-bar">
+            <h3 class="card-header-title">✨ 美容作品照</h3>
+            <span class="card-tag">實拍成果</span>
+          </div>
+          <div class="card-img-wrapper">
+            <img src="photo.png" alt="毛小孩の家 - 美容作品照" loading="lazy">
+          </div>
+          <div class="card-footer-caption">
+            細膩洗護吹整、專業毛型修剪，讓毛小孩清爽自信回家 🐶🐱
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 下面：衛教卡（標題寫「美容後照護」） -->
+    <section class="care-section">
+      <div class="container care-container">
+        <div class="section-header">
+          <h2 class="section-title">專業衛教指南</h2>
+          <p class="section-subtitle">美容結束後的回家保養，毛爸毛媽不可忽視的貼心叮嚀</p>
+        </div>
+
+        <div class="care-card">
+          <div class="care-header">
+            <div class="care-title-group">
+              <h2>🩺 美容後照護</h2>
+              <p>回家後若有抓癢、體溫變化或精神狀況，請參考這份護理原則</p>
+            </div>
+            <span class="care-badge">毛孩爸媽必讀</span>
+          </div>
+          <div class="care-body">
+            <img src="care.png" alt="毛小孩の家 - 美容後照護衛教卡" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer>
+    <div class="container">
+      <div class="footer-brand">🐾 毛小孩の家 寵物美容工作室</div>
+      <p>電話：0900-000-000 ｜ LINE：@maoxiaohai ｜ 營業時間：週二到週日 10:00–19:00（週一公休）</p>
+      <p>服務對象：小型犬、中大型犬、貓 ｜ 一對一預約制寵物美容</p>
+      <p class="footer-note">※ 本頁面為課堂練習示範頁面，電話與 LINE 為示範用非真實店家</p>
+    </div>
+  </footer>
+
+</body>
+</html>
